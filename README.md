@@ -1,6 +1,6 @@
 # G9Assignment2
 Github repo for the C labs for MTRX2700
-###################################################\\
+###################################################
 Acknowledgement:
 Some parts of the code were developed based on the 2022 Tuesday MTRX2700 weekly lecture example code demonstration.
 ###################################################
