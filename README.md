@@ -16,10 +16,46 @@ Jiah Pang          jpan7871
 Olivia Chen        yche4284  
 Shuangning Wan     swan2159  
 
+## Responsibility Allocation
+Task 1 and 2: Daniel
+Task 3: Jiah
+
 ## Detail about the project:
 The aim of the project is to let a dragon board to play a tune based on 8-bit values stored at its serial port. Commands can be received to perform requested actions and output error message.   
 
-## Function Description
+# Task Descriptions
+
+## Task 1: Serial with interrupts
+### Function Description
+This task creates a function in which allows for interfacing to the serial port via the interrupt method rather than the polling method as previously tackled in the ASM lab. To put the entire function simply, we use a terminal simulator (puTTy) to send bytes to the serial I/O registers of the 68HCS12, and it will be outputted back onto the terminal emulator as an indication that the data is recieved.
+
+Now for the high level description of the module:
+- We first declare our function and interrupt required
+    - serialInit is used to initialise the serial port
+    - As we are using a small memory model, we can directly define our interrupt using the method: interrupt 21 void serialISR()
+- Define the variables needed
+    - a buffer where the inputted string is stored into
+    - a stringLength variable to keep track of the length of the string inputted
+- Now the main function
+    - We call the serialInit() function to initialise the serial port, where we set the baud rate of the serial interface to 9600, setting the 8 bits of the control register 1 to be 00000000 and the 8 bits of the control register 2 to be 00101100
+    - EnableInterrupts does what it suggests, enabling the interrupt vectors such that we can create this module using an interrupts method rather than a polling method
+    - Then the code enters an infinite loop to prevent any unexpected operations if the line pointer is to leave the main function
+- If the interrupt is triggered:
+    - We check if the data is received via the RDRF flag (using bitwise and checks if bit 5 is set)
+    - Then check if the data sent in is a carriage return character
+        - If it is, then we will write back to the serial every character, and the "detected" string after each character, that is inputted up until the carriage return character
+        - Otherwise, it will be added to the end of the buffer array and the stringLength variable is incremented
+    - If the carriage return is detected and after outputting all the characters back to the user, the buffer is resetted by using the memset function from string.h and resetting the stringLength variable to 0
+### User Instructions
+Enter a desired string, and press enter at the end of the string, you will then see the string outputted back, character by character, with " detected" at the end of each character
+
+## Task 2: Serial command parser
+### Function Description
+
+### User Instructions
 
 
-## User Instructions
+## Task 3
+### Function Description
+
+### User Instructions
