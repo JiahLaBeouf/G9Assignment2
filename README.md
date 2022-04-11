@@ -73,7 +73,12 @@ Now for the high level description of the module:
     - We set the Data Direction register for port B to 0xFF;
     - Then the code enters an infinite loop to prevent any unexpected operations if the line pointer is to leave the main function (FEED the dog)
 - If the interrupt is triggered:
-- 
+    - We check if the data is received via the RDRF flag (using bitwise and checks if bit 5 is set)
+    - Then check if the data sent in is a carriage return character
+        - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "detected: LED" or "detected:PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
+        - Otherwise, it will be added to the end of the buffer array and the stringLength variable is incremented
+    - If the carriage return is detected and after outputting all the characters back to the user, the buffer is resetted by using the memset function from string.h and resetting the stringLength variable to 0
+    - 
 ### User Instructions
 
 
