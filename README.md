@@ -18,10 +18,7 @@ Shuangning Wan     swan2159
 
 ## Responsibility Allocation
 Task 1 and 2: Daniel
-Task 3: Jiah
-
-## Detail about the project:
-The aim of the project is to let a dragon board to play a tune based on 8-bit values stored at its serial port. Commands can be received to perform requested actions and output error message.   
+Task 3: Jiah 
 
 # Task Descriptions
 
