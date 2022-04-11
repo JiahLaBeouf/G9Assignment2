@@ -50,10 +50,10 @@ Enter a desired string, and press enter at the end of the string, you will then 
 ### Function Description
 The task creates the function to take user inputed command from external serial terminal program  and send back unique action. There are 2 unique actions:  
 By receiving the command "l",  the system will response as: "detected: 
-                                                             LED"
-By receiving the command "m",  the system will response as: "detected: 
-                                                             PERIOD"
-Other invalid commands will have the error message shown: "invalidInput"                                                             
+                                                             LED"  
+By receiving the command "m",  the system will response as: "detected:   
+                                                             PERIOD"  
+Other invalid commands will have the error message shown: "invalidInput"                                                               
 
 ### User Instructions
 
