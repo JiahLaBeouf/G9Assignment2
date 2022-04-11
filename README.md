@@ -19,7 +19,7 @@ Shuangning Wan     swan2159
 ## Responsibility Allocation
 Task 1 and 2: Daniel
 Task 3: Jiah 
-
+Documentation: Olivia
 # Task Descriptions
 
 ## Task 1: Serial with interrupts
