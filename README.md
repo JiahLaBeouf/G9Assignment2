@@ -68,14 +68,14 @@ Now for the high level description of the module:
     - a period variable to toggle upon successful output compare
 - Now the main function
     - We call the timerInit() function to initialise the timer, where we enable the timer and fast flag clear, setting the prescaler to 8. Enable the output compare for channel 5 and interrupts for timer 5.
-    - We call the serialInit() function to initialise the serial port, where we set the baud rate of the serial interface to 9600, setting the 8 bits of the control register 1 to be 00000000 and the 8 bits of the control register 2 to be 00101100
+    - We call the serialInit() function to initialise the serial port, where we set the baud rate of the serial interface to 9600, setting the 8 bits of the control register 1 to be 00000000 and the 8 bits of the control register 2 to be 0x2C
     - EnableInterrupts does what it suggests, enabling the interrupt vectors such that we can create this module using an interrupts method rather than a polling method
     - We set the Data Direction register for port B to 0xFF;
     - Then the code enters an infinite loop to prevent any unexpected operations if the line pointer is to leave the main function (FEED the dog)
 - If the interrupt is triggered:
     - We check if the data is received via the RDRF flag (using bitwise and checks if bit 5 is set)
     - Then check if the data sent in is a carriage return character
-        - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "detected: LED" or "detected:PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
+        - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "detected: LED" or "detected: PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
         - Otherwise, it will be added to the end of the buffer array and the stringLength variable is incremented
     - If the carriage return is detected and after outputting all the characters back to the user, the buffer is resetted by using the memset function from string.h and resetting the stringLength variable to 0
 ### User Instructions
