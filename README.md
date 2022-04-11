@@ -50,11 +50,9 @@ Enter a desired string, and press enter at the end of the string, you will then 
 ### Function Description
 The task creates the function to take user inputed command from external serial terminal program  and send back unique action. There are 2 unique actions:  
 By receiving the command "l",  the system will response as:   
-"detected:    
-                                                             LED"  
+"l: LED"  
 By receiving the command "m",  the system will response as:   
-"detected:    
-                                                             PERIOD"  
+"m: PERIOD"  
 Other invalid commands will have the error message shown: "invalidInput"                                                               
 
 Now for the high level description of the module:   
@@ -75,11 +73,12 @@ Now for the high level description of the module:
 - If the interrupt is triggered:
     - We check if the data is received via the RDRF flag (using bitwise and checks if bit 5 is set)
     - Then check if the data sent in is a carriage return character
-        - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "detected: LED" or "detected: PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
+        - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "l: LED" or "m: PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
         - Otherwise, it will be added to the end of the buffer array and the stringLength variable is incremented
     - If the carriage return is detected and after outputting all the characters back to the user, the buffer is resetted by using the memset function from string.h and resetting the stringLength variable to 0
 ### User Instructions
-
+Enter either 'm' or 'l' command, and press enter, you will then see the related string outputted back, character by character.
+For any other invalid input, the error message "invalidInput" will be outputted.
 
 ## Task 3
 ### Function Description
