@@ -78,7 +78,6 @@ Now for the high level description of the module:
         - If it is, then we will write back to the serial the pre-determined characters. Based on the command received, either "detected: LED" or "detected:PERIOD" will be write back. Both end by "\r". The program write until it reaches the carriage return character.
         - Otherwise, it will be added to the end of the buffer array and the stringLength variable is incremented
     - If the carriage return is detected and after outputting all the characters back to the user, the buffer is resetted by using the memset function from string.h and resetting the stringLength variable to 0
-    - 
 ### User Instructions
 
 
