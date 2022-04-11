@@ -49,9 +49,9 @@ Enter a desired string, and press enter at the end of the string, you will then 
 ## Task 2: Serial command parser
 ### Function Description
 The task creates the function to take user inputed command from external serial terminal program  and send back unique action. There are 2 unique actions:  
-By receiving the command "l",  the system will response as: "detected: 
+By receiving the command "l",  the system will response as: "detected:    
                                                              LED"  
-By receiving the command "m",  the system will response as: "detected:   
+By receiving the command "m",  the system will response as: "detected:    
                                                              PERIOD"  
 Other invalid commands will have the error message shown: "invalidInput"                                                               
 
