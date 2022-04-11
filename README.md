@@ -57,6 +57,23 @@ By receiving the command "m",  the system will response as:
                                                              PERIOD"  
 Other invalid commands will have the error message shown: "invalidInput"                                                               
 
+Now for the high level description of the module:   
+- We first declare our function and interrupt required
+    - serialInit is used to initialise the serial port
+    - timerInit is used to initialise the timer
+    - As we are using a small memory model, we can directly define our interrupt using the method: interrupt 21 void serialISR() and interrupt 13 void speakerISR()
+- Define the variables needed
+    - a buffer where the string to be outputted is stored into
+    - a stringLength variable to keep track of the length of the string inputted
+    - a period variable to toggle upon successful output compare
+- Now the main function
+    - We call the timerInit() function to initialise the timer, where we enable the timer and fast flag clear, setting the prescaler to 8. Enable the output compare for channel 5 and interrupts for timer 5.
+    - We call the serialInit() function to initialise the serial port, where we set the baud rate of the serial interface to 9600, setting the 8 bits of the control register 1 to be 00000000 and the 8 bits of the control register 2 to be 00101100
+    - EnableInterrupts does what it suggests, enabling the interrupt vectors such that we can create this module using an interrupts method rather than a polling method
+    - We set the Data Direction register for port B to 0xFF;
+    - Then the code enters an infinite loop to prevent any unexpected operations if the line pointer is to leave the main function (FEED the dog)
+- If the interrupt is triggered:
+- 
 ### User Instructions
 
 
