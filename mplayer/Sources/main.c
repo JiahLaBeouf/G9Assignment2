@@ -132,7 +132,7 @@ void songPlayStr(char * string){
 
     int i = 0;
 
-
+    //updating the song time for each of the 
     for (i = 0; i < songStrLen; i++){
         int noteVal = string[i];
         //printf("noteval: %d %c\n",noteVal,noteVal);
@@ -156,6 +156,7 @@ void songPlayStr(char * string){
     }
     current_song_time = songLen;
 
+    //calculate the note value and playthe note
     for (i = 0; i < songStrLen; i++){
         int noteVal = string[i];
         //printf("noteval: %d %c\n",noteVal,noteVal);
@@ -182,15 +183,18 @@ void songPlayStr(char * string){
         }else{
             noteVal *= 1000;
         }
+        //play note
         musicNote = noteVal;
         PORTB = noteVal;
         PORTB = 0x06;
         //shows playing new song
         delay_xsn(noteLen);
+        //remove the length from the total song length
         current_song_time-= noteLen;
 
         
     }
+    //set tone to off/rest etc
     musicNote = 100;
     PORTB = 0x5B; //ready for new song
 
