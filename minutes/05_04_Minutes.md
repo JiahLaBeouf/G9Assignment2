@@ -5,6 +5,7 @@ All group members were in attendance
 ## Apologies
 N/A  
 ## Agenda
+Task 1 development faced problem  
 Daniel get task1 worked  
 Task 2 and 3 started
 ## Previous Items
