@@ -99,4 +99,25 @@ This task utilises the serial port to interface to the microcontroller, designin
 ## Task 3
 ### Function Description
 
+#### Included headers
+- string.h included for use of strlen in the use of the parsed string  
+#### Functions and interrupts
+- as mentioned in previous parts, the serial and timer interrupts are set up and additionally the timer interrupts have been implemented for frequency generation.
+- we also have to initialise the buzzer which is attached to PT5 and requires interrupts as well. This is changed through the use of TC5
+- delay_xsn()
+    - uses the timer overflow property of the timer module to perform a delay for a calculated duration. seeing that the TCNT max val is 65, 1 cycle can be calculated and then multiplied to create a variable delay function to play notes over that duration etc. 
+- songPlayStr()
+    - this function intends to play a song based on a string passed to it. the function breaks down the string into individual characters, and then calculates the value of the first 3 bits for duration and the last five for pitch/note. it then updates the overall time to play value and then plays the notes until it reaches the end of the string. this is where the string.h header is used.
+#### variables
+- str_song[]
+    - this variable in the code is like a global string which is used for testing the module. when integrated, this variable would not be used as you could pass in the string from serial into the songPlayStr function. 
+- current_song_time
+    - this integer tracks the current song time of the music module. The songPlayStr function updates this time as it goes, and then decreases this count after the duration of each note. this is also essentially the ready to play next song flag, as unless this value is zero, there can be no next song played. 
+
+### Discussion Points
+- What happens if a new tune is requested before the previous one finishes?
+- What happens if there are unexpected characters or parsing errors from the tune string.
+
+### User instructions
+
 ### User Instructions
