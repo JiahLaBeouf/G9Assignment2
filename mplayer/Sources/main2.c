@@ -182,7 +182,6 @@ void songPlayStr(char * string){
         }else{
             noteVal *= 1000;
         }
-        musicNote = noteVal;
         PORTB = noteVal;
         PORTB = 0x06;
         //shows playing new song
@@ -191,7 +190,7 @@ void songPlayStr(char * string){
 
         
     }
-    musicNote = 100;
+    musicNote = 0;
     PORTB = 0x5B; //ready for new song
 
 
