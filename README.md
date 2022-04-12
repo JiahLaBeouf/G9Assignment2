@@ -115,9 +115,11 @@ This task utilises the serial port to interface to the microcontroller, designin
     - this integer tracks the current song time of the music module. The songPlayStr function updates this time as it goes, and then decreases this count after the duration of each note. this is also essentially the ready to play next song flag, as unless this value is zero, there can be no next song played. 
 
 ### Discussion Points
+- The first major discussion point is the integration. Due to some circumstances out of our control, we were unable to actually integrate the code with the part 2 code. this ment that the serial parsing and functionality around receiving commands for part 3 were not fully completed, but had been addressed more in part 2. The flags and other things (timer count, interrupts) along with the function have been written in mind ready for integration, but unfortunately did not come along
 - What happens if a new tune is requested before the previous one finishes?
+    - as mentioned above, the commands are not being processed by this code itself, but the logic behind it was to use the flag (current_song_time) variable, and if the time is greater than zero, return the time to the serial output and then continue playing the song. the delay using timer overflow should ensure the song kept playing. This count for song time is changed only by the songPlayStr function, and updates throughout the song to show the remaining time of the song.
 - What happens if there are unexpected characters or parsing errors from the tune string.
-
-### User instructions
+    - currently there is not a lot of unexpected characters that could not be handled, as the function processes all ascii characters given they are valid ascii characters. Given more time, a type check would be handy to ensure characters are within the given ascii range and not unicode range, however due to it being serial input this shold not be an issue. 
 
 ### User Instructions
+- To play a song, edit the str_song string at the top of the code, and then run to see the song played on the dragon board. 
